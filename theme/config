@@ -1,0 +1,272 @@
+# XPenguins theme "Vaporwave"
+#
+# Eight kinds of toon wander your desktop, none of them a penguin:
+#
+#   terminal   a CRT on legs, screen playing a sunset over a scrolling grid
+#   cassette   a walking tape, reels turning as it goes
+#   statue     a small Greek figure in a laurel wreath, arms long since gone
+#   palm       a palm tree walking on its own roots, fronds swaying
+#   dolphin    porpoises along in arcs instead of walking
+#   car        a low 80s wedge coupe that drives instead of walking
+#   flamingo   hot pink, long legs, stands on one when it stops
+#   boombox    twin speakers pulsing, tape deck turning, antenna up
+#
+# Every toon implements all 18 activities XPenguins supports: walker, runner,
+# faller, tumbler, climber, floater, explosion, squashed, zapped, splatted,
+# angel, exit, and action0 through action5. (The man page says action0-6, but
+# the binary only defines PENGUIN_ACTION0..PENGUIN_ACTION5 -- six of them.)
+#
+# Direction rows, verified by running xpenguins against a probe theme:
+#   walker / runner  row 0 = moving left,  row 1 = moving right
+#   zapped           row 0 = facing left,  row 1 = facing right
+#   climber          row 0 = wall on the toon's left, row 1 = on its right
+
+delay 60          # milliseconds between frames
+
+define default
+	width 30      # frame width
+	height 30     # frame height
+	frames 8      # frames per pixmap
+	speed 4       # pixels per frame
+	directions 1
+
+
+# ---------------------------------------------------------------------
+# terminal. Screen flashes red when falling and cuts to static when things go wrong.
+# ---------------------------------------------------------------------
+toon terminal
+	number 3
+
+	# getting about. walker and faller are the two every toon must have.
+	define faller     pixmap faller.xpm  speed 3
+	define walker     pixmap walker.xpm  directions 2 speed 4
+	define runner     pixmap runner.xpm  directions 2 speed 9
+	define climber    pixmap climber.xpm directions 2 speed 4
+	define floater    pixmap floater.xpm speed 3 height 44
+	define tumbler    pixmap tumbler.xpm speed 1 acceleration 1 terminal_velocity 8
+
+	# ways to go. explosion is the tame one --no-blood falls back to.
+	define explosion  pixmap explosion.xpm    width 40 height 40
+	define squashed   pixmap squashed.xpm
+	define splatted   pixmap splatted.xpm
+	define zapped     pixmap zapped.xpm  directions 2
+	define exit       pixmap exit.xpm
+	define angel      pixmap angel.xpm   frames 4 width 36 speed 3
+
+	# six idle actions, picked at random when a toon stops
+	define action0    pixmap action0.xpm speed 0 loop -4   # each toon's own: screen, reels, fronds, wheels, speakers
+	define action1    pixmap action1.xpm speed 0 loop -3   # glances the other way and back
+	define action2    pixmap action2.xpm speed 0 loop -3   # crouches and springs
+	define action3    pixmap action3.xpm speed 0 loop -4   # rocks slowly side to side
+	define action4    pixmap action4.xpm speed 0 loop -2   # shivers
+	define action5    pixmap action5.xpm speed 0 loop -2   # glitches into scanlines, then recovers
+
+# ---------------------------------------------------------------------
+# cassette. Reels spin faster the faster it goes.
+# ---------------------------------------------------------------------
+toon cassette
+	number 3
+
+	# getting about. walker and faller are the two every toon must have.
+	define faller     pixmap faller_tape.xpm  speed 3
+	define walker     pixmap walker_tape.xpm  directions 2 speed 4
+	define runner     pixmap runner_tape.xpm  directions 2 speed 9
+	define climber    pixmap climber_tape.xpm directions 2 speed 4
+	define floater    pixmap floater_tape.xpm speed 3 height 44
+	define tumbler    pixmap tumbler_tape.xpm speed 1 acceleration 1 terminal_velocity 8
+
+	# ways to go. explosion is the tame one --no-blood falls back to.
+	define explosion  pixmap explosion.xpm    width 40 height 40
+	define squashed   pixmap squashed_tape.xpm
+	define splatted   pixmap splatted_tape.xpm
+	define zapped     pixmap zapped_tape.xpm  directions 2
+	define exit       pixmap exit_tape.xpm
+	define angel      pixmap angel_tape.xpm   frames 4 width 36 speed 3
+
+	# six idle actions, picked at random when a toon stops
+	define action0    pixmap action0_tape.xpm speed 0 loop -4   # each toon's own: screen, reels, fronds, wheels, speakers
+	define action1    pixmap action1_tape.xpm speed 0 loop -3   # glances the other way and back
+	define action2    pixmap action2_tape.xpm speed 0 loop -3   # crouches and springs
+	define action3    pixmap action3_tape.xpm speed 0 loop -4   # rocks slowly side to side
+	define action4    pixmap action4_tape.xpm speed 0 loop -2   # shivers
+	define action5    pixmap action5_tape.xpm speed 0 loop -2   # glitches into scanlines, then recovers
+
+# ---------------------------------------------------------------------
+# statue. Slower than the rest, being made of marble. Heavier when it lands, too.
+# ---------------------------------------------------------------------
+toon statue
+	number 2
+
+	# getting about. walker and faller are the two every toon must have.
+	define faller     pixmap faller_statue.xpm  speed 3
+	define walker     pixmap walker_statue.xpm  directions 2 speed 3
+	define runner     pixmap runner_statue.xpm  directions 2 speed 7
+	define climber    pixmap climber_statue.xpm directions 2 speed 3
+	define floater    pixmap floater_statue.xpm speed 3 height 44
+	define tumbler    pixmap tumbler_statue.xpm speed 1 acceleration 1 terminal_velocity 9
+
+	# ways to go. explosion is the tame one --no-blood falls back to.
+	define explosion  pixmap explosion.xpm    width 40 height 40
+	define squashed   pixmap squashed_statue.xpm
+	define splatted   pixmap splatted_statue.xpm
+	define zapped     pixmap zapped_statue.xpm  directions 2
+	define exit       pixmap exit_statue.xpm
+	define angel      pixmap angel_statue.xpm   frames 4 width 36 speed 3
+
+	# six idle actions, picked at random when a toon stops
+	define action0    pixmap action0_statue.xpm speed 0 loop -4   # each toon's own: screen, reels, fronds, wheels, speakers
+	define action1    pixmap action1_statue.xpm speed 0 loop -3   # glances the other way and back
+	define action2    pixmap action2_statue.xpm speed 0 loop -3   # crouches and springs
+	define action3    pixmap action3_statue.xpm speed 0 loop -4   # rocks slowly side to side
+	define action4    pixmap action4_statue.xpm speed 0 loop -2   # shivers
+	define action5    pixmap action5_statue.xpm speed 0 loop -2   # glitches into scanlines, then recovers
+
+# ---------------------------------------------------------------------
+# palm. Fronds sway as it walks and stream backwards when it runs.
+# ---------------------------------------------------------------------
+toon palm
+	number 2
+
+	# getting about. walker and faller are the two every toon must have.
+	define faller     pixmap faller_palm.xpm  speed 3
+	define walker     pixmap walker_palm.xpm  directions 2 speed 3
+	define runner     pixmap runner_palm.xpm  directions 2 speed 7
+	define climber    pixmap climber_palm.xpm directions 2 speed 3
+	define floater    pixmap floater_palm.xpm speed 3 height 44
+	define tumbler    pixmap tumbler_palm.xpm speed 1 acceleration 1 terminal_velocity 8
+
+	# ways to go. explosion is the tame one --no-blood falls back to.
+	define explosion  pixmap explosion.xpm    width 40 height 40
+	define squashed   pixmap squashed_palm.xpm
+	define splatted   pixmap splatted_palm.xpm
+	define zapped     pixmap zapped_palm.xpm  directions 2
+	define exit       pixmap exit_palm.xpm
+	define angel      pixmap angel_palm.xpm   frames 4 width 36 speed 3
+
+	# six idle actions, picked at random when a toon stops
+	define action0    pixmap action0_palm.xpm speed 0 loop -4   # each toon's own: screen, reels, fronds, wheels, speakers
+	define action1    pixmap action1_palm.xpm speed 0 loop -3   # glances the other way and back
+	define action2    pixmap action2_palm.xpm speed 0 loop -3   # crouches and springs
+	define action3    pixmap action3_palm.xpm speed 0 loop -4   # rocks slowly side to side
+	define action4    pixmap action4_palm.xpm speed 0 loop -2   # shivers
+	define action5    pixmap action5_palm.xpm speed 0 loop -2   # glitches into scanlines, then recovers
+
+# ---------------------------------------------------------------------
+# dolphin. Arcs as it goes, and arcs harder at a run. Quickest of the walkers.
+# ---------------------------------------------------------------------
+toon dolphin
+	number 2
+
+	# getting about. walker and faller are the two every toon must have.
+	define faller     pixmap faller_dolphin.xpm  speed 3
+	define walker     pixmap walker_dolphin.xpm  directions 2 speed 6
+	define runner     pixmap runner_dolphin.xpm  directions 2 speed 12
+	define climber    pixmap climber_dolphin.xpm directions 2 speed 5
+	define floater    pixmap floater_dolphin.xpm speed 3 height 44
+	define tumbler    pixmap tumbler_dolphin.xpm speed 1 acceleration 1 terminal_velocity 8
+
+	# ways to go. explosion is the tame one --no-blood falls back to.
+	define explosion  pixmap explosion.xpm    width 40 height 40
+	define squashed   pixmap squashed_dolphin.xpm
+	define splatted   pixmap splatted_dolphin.xpm
+	define zapped     pixmap zapped_dolphin.xpm  directions 2
+	define exit       pixmap exit_dolphin.xpm
+	define angel      pixmap angel_dolphin.xpm   frames 4 width 36 speed 3
+
+	# six idle actions, picked at random when a toon stops
+	define action0    pixmap action0_dolphin.xpm speed 0 loop -4   # each toon's own: screen, reels, fronds, wheels, speakers
+	define action1    pixmap action1_dolphin.xpm speed 0 loop -3   # glances the other way and back
+	define action2    pixmap action2_dolphin.xpm speed 0 loop -3   # crouches and springs
+	define action3    pixmap action3_dolphin.xpm speed 0 loop -4   # rocks slowly side to side
+	define action4    pixmap action4_dolphin.xpm speed 0 loop -2   # shivers
+	define action5    pixmap action5_dolphin.xpm speed 0 loop -2   # glitches into scanlines, then recovers
+
+# ---------------------------------------------------------------------
+# car. Drives rather than walks. Wheels spin, suspension jogs, exhaust puffs.
+# ---------------------------------------------------------------------
+toon car
+	number 2
+
+	# getting about. walker and faller are the two every toon must have.
+	define faller     pixmap faller_car.xpm  speed 3
+	define walker     pixmap walker_car.xpm  directions 2 speed 7
+	define runner     pixmap runner_car.xpm  directions 2 speed 14
+	define climber    pixmap climber_car.xpm directions 2 speed 4
+	define floater    pixmap floater_car.xpm speed 3 height 44
+	define tumbler    pixmap tumbler_car.xpm speed 1 acceleration 1 terminal_velocity 10
+
+	# ways to go. explosion is the tame one --no-blood falls back to.
+	define explosion  pixmap explosion.xpm    width 40 height 40
+	define squashed   pixmap squashed_car.xpm
+	define splatted   pixmap splatted_car.xpm
+	define zapped     pixmap zapped_car.xpm  directions 2
+	define exit       pixmap exit_car.xpm
+	define angel      pixmap angel_car.xpm   frames 4 width 36 speed 3
+
+	# six idle actions, picked at random when a toon stops
+	define action0    pixmap action0_car.xpm speed 0 loop -4   # each toon's own: screen, reels, fronds, wheels, speakers
+	define action1    pixmap action1_car.xpm speed 0 loop -3   # glances the other way and back
+	define action2    pixmap action2_car.xpm speed 0 loop -3   # crouches and springs
+	define action3    pixmap action3_car.xpm speed 0 loop -4   # rocks slowly side to side
+	define action4    pixmap action4_car.xpm speed 0 loop -2   # shivers
+	define action5    pixmap action5_car.xpm speed 0 loop -2   # glitches into scanlines, then recovers
+
+# ---------------------------------------------------------------------
+# flamingo. High-stepping walk on backward-bending knees. Stands on one leg when idle.
+# ---------------------------------------------------------------------
+toon flamingo
+	number 2
+
+	# getting about. walker and faller are the two every toon must have.
+	define faller     pixmap faller_bird.xpm  speed 3
+	define walker     pixmap walker_bird.xpm  directions 2 speed 4
+	define runner     pixmap runner_bird.xpm  directions 2 speed 10
+	define climber    pixmap climber_bird.xpm directions 2 speed 3
+	define floater    pixmap floater_bird.xpm speed 3 height 44
+	define tumbler    pixmap tumbler_bird.xpm speed 1 acceleration 1 terminal_velocity 8
+
+	# ways to go. explosion is the tame one --no-blood falls back to.
+	define explosion  pixmap explosion.xpm    width 40 height 40
+	define squashed   pixmap squashed_bird.xpm
+	define splatted   pixmap splatted_bird.xpm
+	define zapped     pixmap zapped_bird.xpm  directions 2
+	define exit       pixmap exit_bird.xpm
+	define angel      pixmap angel_bird.xpm   frames 4 width 36 speed 3
+
+	# six idle actions, picked at random when a toon stops
+	define action0    pixmap action0_bird.xpm speed 0 loop -4   # each toon's own: screen, reels, fronds, wheels, speakers
+	define action1    pixmap action1_bird.xpm speed 0 loop -3   # glances the other way and back
+	define action2    pixmap action2_bird.xpm speed 0 loop -3   # crouches and springs
+	define action3    pixmap action3_bird.xpm speed 0 loop -4   # rocks slowly side to side
+	define action4    pixmap action4_bird.xpm speed 0 loop -2   # shivers
+	define action5    pixmap action5_bird.xpm speed 0 loop -2   # glitches into scanlines, then recovers
+
+# ---------------------------------------------------------------------
+# boombox. Slow and heavy. Speakers pulse, VU meters flicker, spindles turn.
+# ---------------------------------------------------------------------
+toon boombox
+	number 2
+
+	# getting about. walker and faller are the two every toon must have.
+	define faller     pixmap faller_boom.xpm  speed 3
+	define walker     pixmap walker_boom.xpm  directions 2 speed 3
+	define runner     pixmap runner_boom.xpm  directions 2 speed 6
+	define climber    pixmap climber_boom.xpm directions 2 speed 3
+	define floater    pixmap floater_boom.xpm speed 3 height 44
+	define tumbler    pixmap tumbler_boom.xpm speed 1 acceleration 1 terminal_velocity 9
+
+	# ways to go. explosion is the tame one --no-blood falls back to.
+	define explosion  pixmap explosion.xpm    width 40 height 40
+	define squashed   pixmap squashed_boom.xpm
+	define splatted   pixmap splatted_boom.xpm
+	define zapped     pixmap zapped_boom.xpm  directions 2
+	define exit       pixmap exit_boom.xpm
+	define angel      pixmap angel_boom.xpm   frames 4 width 36 speed 3
+
+	# six idle actions, picked at random when a toon stops
+	define action0    pixmap action0_boom.xpm speed 0 loop -4   # each toon's own: screen, reels, fronds, wheels, speakers
+	define action1    pixmap action1_boom.xpm speed 0 loop -3   # glances the other way and back
+	define action2    pixmap action2_boom.xpm speed 0 loop -3   # crouches and springs
+	define action3    pixmap action3_boom.xpm speed 0 loop -4   # rocks slowly side to side
+	define action4    pixmap action4_boom.xpm speed 0 loop -2   # shivers
+	define action5    pixmap action5_boom.xpm speed 0 loop -2   # glitches into scanlines, then recovers

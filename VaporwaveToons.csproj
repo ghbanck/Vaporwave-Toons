@@ -1,0 +1,52 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Vaporwave Toons: the XPenguins "Vaporwave" theme, running natively on Windows.
+    Targets .NET Framework 4.8, which ships with Windows 10 and 11, so the result is a
+    single .exe with nothing to install. Build with:  dotnet build -c Release
+  -->
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net48</TargetFramework>
+    <LangVersion>latest</LangVersion>
+    <Nullable>disable</Nullable>
+    <ImplicitUsings>disable</ImplicitUsings>
+    <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+    <AssemblyName>VaporwaveToons</AssemblyName>
+    <RootNamespace>VaporwaveToons</RootNamespace>
+    <ApplicationIcon>assets\vaporwave.ico</ApplicationIcon>
+    <ApplicationManifest>app.manifest</ApplicationManifest>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <Prefer32Bit>false</Prefer32Bit>
+    <DebugType>none</DebugType>
+    <GenerateDocumentationFile>false</GenerateDocumentationFile>
+
+    <Version>1.1.0</Version>
+    <Product>Vaporwave Toons</Product>
+    <AssemblyTitle>Vaporwave Toons</AssemblyTitle>
+    <Description>Desktop toons for Windows: the XPenguins Vaporwave theme, running natively</Description>
+    <Company></Company>
+    <Copyright>Copyright (c) 2026 Gustavo Banck. MIT License. Vaporwave theme: CC0 1.0.</Copyright>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO.Compression" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="assets\vaporwave.ico" LogicalName="vaporwave.ico" />
+    <EmbeddedResource Include="$(IntermediateOutputPath)theme.zip" LogicalName="theme.zip" />
+    <ThemeFile Include="theme\**" />
+    <UpToDateCheckInput Include="@(ThemeFile)" />
+  </ItemGroup>
+
+  <!-- The theme folder goes into the exe as one zip, so the program is a single file. -->
+  <Target Name="PackTheme" BeforeTargets="BeforeBuild" Inputs="@(ThemeFile)" Outputs="$(IntermediateOutputPath)theme.zip">
+    <MakeDir Directories="$(IntermediateOutputPath)" />
+    <ZipDirectory SourceDirectory="theme" DestinationFile="$(IntermediateOutputPath)theme.zip" Overwrite="true" />
+  </Target>
+
+</Project>
