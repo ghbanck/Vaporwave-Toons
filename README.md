@@ -3,10 +3,12 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/ghbanck/Vaporwave-Toons/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/ghbanck/Vaporwave-Toons?color=ff71ce&label=release"></a>
+  <a href="LICENSE"><img alt="License: MIT" src="https://img.shields.io/badge/license-MIT-3fb950"></a>
+  <img alt="Platform: Windows 10 | 11" src="https://img.shields.io/badge/platform-Windows%2010%20%7C%2011-0078d4">
+  <img alt="Runtime: .NET Framework 4.8" src="https://img.shields.io/badge/runtime-.NET%20Framework%204.8-512bd4">
+  <img alt="Renderer: layered windows" src="https://img.shields.io/badge/renderer-layered%20windows-8250df">
   <a href="https://github.com/ghbanck/Vaporwave-Toons/actions/workflows/build.yml"><img alt="Build" src="https://github.com/ghbanck/Vaporwave-Toons/actions/workflows/build.yml/badge.svg"></a>
-  <img alt="Windows 10 and 11" src="https://img.shields.io/badge/Windows-10%20%7C%2011-01cdfe">
-  <a href="LICENSE"><img alt="MIT License" src="https://img.shields.io/badge/license-MIT-b967ff"></a>
+  <a href="https://github.com/ghbanck/Vaporwave-Toons/releases/latest"><img alt="Latest release" src="https://img.shields.io/github/v/release/ghbanck/Vaporwave-Toons?color=ff71ce&label=release"></a>
 </p>
 
 <p align="center"><b>English</b> · <a href="README.pt-BR.md">Português</a></p>
